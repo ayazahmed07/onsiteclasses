@@ -1,5 +1,6 @@
 "use strict";
 function greet() {
-    return "Hellow World";
+    return "Hello World Printed by Ayaz";
 }
-console.log(greet());
+let message = greet();
+console.log(message);

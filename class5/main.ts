@@ -1,5 +1,7 @@
 function greet (){
-    return "Hellow World";
+    return "Hello World Printed by Ayaz";
 }
+let message = greet();
+console.log(message);
 
-console.log(greet());
+
