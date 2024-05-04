@@ -20,6 +20,3 @@ let car = {
     Chasis_No: 103412366788,
 };
 console.log(car);
-console.log(car.Model);
-console.log(car.Make);
-console.log(car.Chasis_No);

@@ -24,13 +24,21 @@
 // Basic Objects in Typescript
 
 
-let car = {
-name: "Toyota",
-Model: 2022,
-Make: "Carolla",
-Chasis_No : 103412366788,
+// let car = {
+// name: "Toyota",
+// Model: 2022,
+// Make: "Carolla",
+// Chasis_No : 103412366788,
 
 
-}
-console.log(car);
+// }
+// console.log(car);
+
+
+
+// Modules
+
+
+
+
 
