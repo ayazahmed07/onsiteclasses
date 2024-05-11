@@ -12,8 +12,14 @@ let fruits: string[] = ["Mango", "Pome", "Banana", "Grapes"];
 
 // Slice
 
-let copy = fruits.slice(1,2) // it makes a copy of an array
+// let copy = fruits.slice(1,2) // it makes a copy of an array and return the index 
+
+// console.log(copy);
+
+// console.log(fruits);
+
+let copyof = fruits.splice(1,1, "Orange"); // delete elements from index to the number of elements / we can also add elements
 
 console.log(fruits);
-console.log(copy);
 
+console.log(copyof);
