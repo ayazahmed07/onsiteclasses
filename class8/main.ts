@@ -2,14 +2,14 @@
 
 let fruits: string[] = ["Mango", "Pome", "Banana"];
 
-fruits.push("Apple");
+fruits.push("Apple"); // Add apple to the end
 
-let F1 = fruits.pop();
+fruits.pop(); // Remove apple to the end
 
-fruits.shift();
+fruits.shift(); // Removes the first element "Mango"
 
-fruits.unshift("Apple");
-
+fruits.unshift("Kiwi"); // Add kiwi to the start 
 
 console.log(fruits);
-console.log(F1);
+
+// Slice
