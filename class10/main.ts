@@ -65,3 +65,6 @@ console.log(sum(2, "3"));
 console.log(sum("2", 3));
 console.log(sum(true, 3));
 console.log(sum(false, 3));
+
+
+// Make a login function
