@@ -24,4 +24,4 @@ function sum(...rest) {
     }
     console.log(total);
 }
-sum(12, 1, 2, 4);
+sum(1, 2, 3, 4);
