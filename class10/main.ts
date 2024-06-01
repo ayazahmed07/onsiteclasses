@@ -67,4 +67,6 @@ console.log(sum(true, 3));
 console.log(sum(false, 3));
 
 
-// Make a login function
+// Make a login function which have 2 overlaods and will accept email and password
+
+// second overlaod will accept only email
