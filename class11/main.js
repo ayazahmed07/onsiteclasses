@@ -5,3 +5,4 @@ let User1 = {
     age: 23,
     address: { city: "Karachi", state: "Pakistan" },
 };
+console.log(User1);
