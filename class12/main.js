@@ -1,4 +1,3 @@
-"use strict";
 // Async Function Javascript
 function checkmarks() {
     return new Promise((resolve, reject) => {
@@ -10,9 +9,11 @@ function checkmarks() {
             else {
                 reject("You are failed");
             }
-        }, 5000);
+        }, 2000);
     });
 }
-checkmarks().then((fff) => { console.log(fff); }).catch((ee) => {
-    console.log(ee);
-});
+// checkmarks().then((fff) => {console.log(fff);}).catch((ee) => {
+// console.log(ee);})
+let result = await checkmarks();
+console.log(result);
+export {};
