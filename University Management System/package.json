@@ -1,0 +1,14 @@
+{
+  "name": "university-management-system",
+  "version": "1.0.0",
+  "description": "University Management System Assignment in Object Oriented Programming",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ayaz ahmed GIAIC Sat 2-5",
+  "license": "MIT",
+  "dependencies": {
+    "inquirer": "^9.2.23"
+  }
+}
