@@ -65,8 +65,8 @@ const students = [];
 const insturctor = [];
 const course = [];
 const Deprt = [];
-const exit = false;
-while (!exit) {
+const Exit = false;
+while (!Exit) {
     let userinput = await inquirer.prompt([
         {
             name: "userinput",
@@ -223,6 +223,10 @@ while (!exit) {
     else if (input === "View Students") {
         console.log(chalk.blue.bold(`List of Students`));
         students.forEach((students, index) => console.log(`${index + 1}, Student Name: ${students.name}, Age: ${students.age}, Gender: ${students.gender}, Roll Number: ${students.rollnumber}`));
+    }
+    else if (input === "View Instructor") {
+        console.log(chalk.blue.bold(`List of Instructor's`));
+        insturctor.forEach((insturctor, index) => console.log(`${index + 1}, Instructor Name: ${insturctor.name}, Age: ${insturctor.age}, Gender: ${insturctor.gender}, Salary: ${insturctor.salary}`));
     }
 }
 // const student1 = new Student("Ayaz", 29, "Male");
