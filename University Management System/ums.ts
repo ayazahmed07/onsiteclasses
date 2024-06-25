@@ -225,7 +225,7 @@ while (!Exit) {
       },
     ]);
 
-    const addcour = new Course(courseadd.courname);
+    const addcour = new Course(courseadd.coursname);
     course.push(courseadd);
     console.log(chalk.green("Course Added Successfuly"));
   } else if (input === "Add Department") {

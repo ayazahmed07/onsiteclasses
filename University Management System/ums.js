@@ -195,7 +195,7 @@ while (!Exit) {
                 },
             },
         ]);
-        const addcour = new Course(courseadd.courname);
+        const addcour = new Course(courseadd.coursname);
         course.push(courseadd);
         console.log(chalk.green("Course Added Successfuly"));
     }
@@ -234,7 +234,7 @@ while (!Exit) {
     }
     else if (input === "View Departments") {
         console.log(chalk.blue.bold(`List of Department's`));
-        Deprt.forEach((Deprt, index) => console.log(`${index + 1}, Department Name: ${Deprt.deptname} }`));
+        Deprt.forEach((Deprt, index) => console.log(`${index + 1}, Department Name: ${Deprt.deptname}`));
     }
     else if (input === "Exit") {
         break;
