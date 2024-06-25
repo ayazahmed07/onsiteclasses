@@ -174,7 +174,7 @@ while (!Exit) {
                 },
             },
         ]);
-        const addInst = new Instructor(addInstructor.name, addInstructor.age, addInstructor.gender, addInstructor.salary);
+        const addInst = new Instructor(addInstructor.instname, addInstructor.instage, addInstructor.gender, addInstructor.salary);
         insturctor.push(addInst);
         console.log(chalk.green("Instructor Added Successfuly"));
     }
@@ -227,6 +227,17 @@ while (!Exit) {
     else if (input === "View Instructor") {
         console.log(chalk.blue.bold(`List of Instructor's`));
         insturctor.forEach((insturctor, index) => console.log(`${index + 1}, Instructor Name: ${insturctor.name}, Age: ${insturctor.age}, Gender: ${insturctor.gender}, Salary: ${insturctor.salary}`));
+    }
+    else if (input === "View Courses") {
+        console.log(chalk.blue.bold(`List of Courses`));
+        course.forEach((course, index) => console.log(`${index + 1}, Course Name: ${course.coursename}, Course ID: ${course.id}}`));
+    }
+    else if (input === "View Departments") {
+        console.log(chalk.blue.bold(`List of Department's`));
+        Deprt.forEach((Deprt, index) => console.log(`${index + 1}, Department Name: ${Deprt.deptname} }`));
+    }
+    else if (input === "Exit") {
+        break;
     }
 }
 // const student1 = new Student("Ayaz", 29, "Male");

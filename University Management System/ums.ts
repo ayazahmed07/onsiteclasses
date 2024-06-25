@@ -201,8 +201,8 @@ while (!Exit) {
     ]);
 
     const addInst = new Instructor(
-      addInstructor.name,
-      addInstructor.age,
+      addInstructor.instname,
+      addInstructor.instage,
       addInstructor.gender,
       addInstructor.salary
     );
@@ -266,6 +266,22 @@ while (!Exit) {
         }, Gender: ${insturctor.gender}, Salary: ${insturctor.salary}`
       )
     );
+  } else if (input === "View Courses") {
+    console.log(chalk.blue.bold(`List of Courses`));
+    course.forEach((course, index) =>
+      console.log(
+        `${index + 1}, Course Name: ${course.coursename}, Course ID: ${
+          course.id
+        }}`
+      )
+    );
+  } else if (input === "View Departments") {
+    console.log(chalk.blue.bold(`List of Department's`));
+    Deprt.forEach((Deprt, index) =>
+      console.log(`${index + 1}, Department Name: ${Deprt.deptname}`)
+    );
+  } else if (input === "Exit") {
+    break;
   }
 }
 
