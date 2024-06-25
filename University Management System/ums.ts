@@ -12,7 +12,7 @@ class Person {
     this.gender = gender;
   }
 
-  getname() { }
+  getname() {}
 }
 
 class Student extends Person {
@@ -82,129 +82,191 @@ const insturctor: Instructor[] = [];
 const course: Course[] = [];
 const Deprt: Department[] = [];
 
-let userinput = await inquirer.prompt([
-  {
-    name: "userinput",
-    type: "list",
-    message: "What do you want to do?",
-    choices: [
-      "Add Student",
-      "Add Instructor",
-      "Add Course",
-      "Add Department",
-      "Enroll Student",
-      "View Students",
-      "View Instructor",
-      "View Courses",
-      "View Departments",
-      "View Enrollments",
-      "Exit",
-    ],
-  },
-]);
+const Exit = false;
 
-const input = userinput.userinput
-
-if (input === "Add Student") {
-  const Addstudent = await inquirer.prompt([
+while (!Exit) {
+  let userinput = await inquirer.prompt([
     {
-      name: "studentname",
-      type: "input",
-      message: "Please enter student name?",
-      validate: (input) => {
-        if (!input.trim()) {
-          return chalk.bold.red("Please enter student name!");
-        } else if (/\d/.test(input)) {
-          return chalk.bold.red("Name should not contain numbers!");
-        }
-        return true;
-      },
-    },
-    {
-      name: "studentage",
-      type: "input",
-      message: "Please enter student age?",
-      validate: (input) => {
-        const age = parseInt(input, 10);
-        if (isNaN(age) || age <= 0 || age >= 100) {
-          return chalk.bold.red("Please enter a valid age!");
-        }
-        return true;
-      },
-    },
-
-    {
-      name: "gender",
+      name: "userinput",
       type: "list",
-      message: "Please select your gender?",
-      choices: ["Male", "Female"],
+      message: "What do you want to do?",
+      choices: [
+        "Add Student",
+        "Add Instructor",
+        "Add Course",
+        "Add Department",
+        "Enroll Student",
+        "View Students",
+        "View Instructor",
+        "View Courses",
+        "View Departments",
+        "View Enrollments",
+        "Exit",
+      ],
     },
   ]);
 
-  const addstdt = new Student(
-    Addstudent.studentname,
-    parseInt(Addstudent.studentage),
-    Addstudent.gender
-  );
-  students.push(addstdt);
-  console.log(chalk.green("Student Added Successfuly"));
-} else if (input === "Add Instructor") {
-  const addInstructor = await inquirer.prompt([
-    {
-      name: "instname",
-      type: "input",
-      message: "Please enter instructor name?",
-      validate: (input) => {
-        if (!input.trim()) {
-          return chalk.bold.red("Please enter instructor name!");
-        } else if (/\d/.test(input)) {
-          return chalk.bold.red("Name should not contain numbers!");
-        }
-        return true;
-      },
-    },
-    {
-      name: "instage",
-      type: "input",
-      message: "Please enter instructor age?",
-      validate: (input) => {
-        const age = parseInt(input, 10);
-        if (isNaN(age) || age <= 0 || age >= 100) {
-          return chalk.bold.red("Please enter a valid age!");
-        }
-        return true;
-      },
-    },
+  const input = userinput.userinput;
 
-    {
-      name: "gender",
-      type: "list",
-      message: "Please select your gender?",
-      choices: ["Male", "Female"],
-    },
-
-    {
-      name: "salary",
-      type: "input",
-      message: "Please enter instructor salary?",
-      validate: (input) => {
-        const salary = parseInt(input, 10);
-        if (isNaN(salary) || salary <= 0 || salary >= 1000000) {
-          return chalk.bold.red("Please enter a valid salary!");
-        }
-        return true;
+  if (input === "Add Student") {
+    const Addstudent = await inquirer.prompt([
+      {
+        name: "studentname",
+        type: "input",
+        message: "Please enter student name?",
+        validate: (input) => {
+          if (!input.trim()) {
+            return chalk.bold.red("Please enter student name!");
+          } else if (/\d/.test(input)) {
+            return chalk.bold.red("Name should not contain numbers!");
+          }
+          return true;
+        },
       },
-    },
-  ]);
+      {
+        name: "studentage",
+        type: "input",
+        message: "Please enter student age?",
+        validate: (input) => {
+          const age = parseInt(input, 10);
+          if (isNaN(age) || age <= 0 || age >= 100) {
+            return chalk.bold.red("Please enter a valid age!");
+          }
+          return true;
+        },
+      },
 
-  const addInst = new Instructor(
-    addInstructor.name,
-    addInstructor.age,
-    addInstructor.gender,
-    addInstructor.salary
-  );
-  insturctor.push(addInst);
-  console.log(chalk.green("Instructor Added Successfuly"));
+      {
+        name: "gender",
+        type: "list",
+        message: "Please select your gender?",
+        choices: ["Male", "Female"],
+      },
+    ]);
+
+    const addstdt = new Student(
+      Addstudent.studentname,
+      parseInt(Addstudent.studentage),
+      Addstudent.gender
+    );
+    students.push(addstdt);
+    console.log(chalk.green("Student Added Successfuly"));
+  } else if (input === "Add Instructor") {
+    const addInstructor = await inquirer.prompt([
+      {
+        name: "instname",
+        type: "input",
+        message: "Please enter instructor name?",
+        validate: (input) => {
+          if (!input.trim()) {
+            return chalk.bold.red("Please enter instructor name!");
+          } else if (/\d/.test(input)) {
+            return chalk.bold.red("Name should not contain numbers!");
+          }
+          return true;
+        },
+      },
+      {
+        name: "instage",
+        type: "input",
+        message: "Please enter instructor age?",
+        validate: (input) => {
+          const age = parseInt(input, 10);
+          if (isNaN(age) || age <= 0 || age >= 100) {
+            return chalk.bold.red("Please enter a valid age!");
+          }
+          return true;
+        },
+      },
+
+      {
+        name: "gender",
+        type: "list",
+        message: "Please select your gender?",
+        choices: ["Male", "Female"],
+      },
+
+      {
+        name: "salary",
+        type: "input",
+        message: "Please enter instructor salary?",
+        validate: (input) => {
+          const salary = parseInt(input, 10);
+          if (isNaN(salary) || salary <= 0 || salary >= 1000000) {
+            return chalk.bold.red("Please enter a valid salary!");
+          }
+          return true;
+        },
+      },
+    ]);
+
+    const addInst = new Instructor(
+      addInstructor.name,
+      addInstructor.age,
+      addInstructor.gender,
+      addInstructor.salary
+    );
+    insturctor.push(addInst);
+    console.log(chalk.green("Instructor Added Successfuly"));
+  } else if (input === "Add Course") {
+    const courseadd = await inquirer.prompt([
+      {
+        name: "coursname",
+        type: "input",
+        message: "Please enter course name?",
+        validate: (input) => {
+          if (!input.trim()) {
+            return chalk.bold.red("Please enter course name!");
+          } else if (/\d/.test(input)) {
+            return chalk.bold.red("Name should not contain numbers!");
+          }
+          return true;
+        },
+      },
+    ]);
+
+    const addcour = new Course(courseadd.courname);
+    course.push(courseadd);
+    console.log(chalk.green("Course Added Successfuly"));
+  } else if (input === "Add Department") {
+    const adddept = await inquirer.prompt([
+      {
+        name: "deptname",
+        type: "input",
+        message: "Please enter department name?",
+        validate: (input) => {
+          if (!input.trim()) {
+            return chalk.bold.red("Please enter department name!");
+          } else if (/\d/.test(input)) {
+            return chalk.bold.red("Name should not contain numbers!");
+          }
+          return true;
+        },
+      },
+    ]);
+
+    const adddepartment = new Department(adddept.deptname);
+    Deprt.push(adddepartment);
+    console.log(chalk.green("Department Added Successfuly"));
+  } else if (input === "View Students") {
+    console.log(chalk.blue.bold(`List of Students`));
+    students.forEach((students, index) =>
+      console.log(
+        `${index + 1}, Student Name: ${students.name}, Age: ${
+          students.age
+        }, Gender: ${students.gender}, Roll Number: ${students.rollnumber}`
+      )
+    );
+  } else if (input === "View Instructor") {
+    console.log(chalk.blue.bold(`List of Instructor's`));
+    insturctor.forEach((insturctor, index) =>
+      console.log(
+        `${index + 1}, Instructor Name: ${insturctor.name}, Age: ${
+          insturctor.age
+        }, Gender: ${insturctor.gender}, Salary: ${insturctor.salary}`
+      )
+    );
+  }
 }
 
 // const student1 = new Student("Ayaz", 29, "Male");
