@@ -12,7 +12,7 @@ class Person {
     this.gender = gender;
   }
 
-  getname() {}
+  getname() { }
 }
 
 class Student extends Person {
@@ -103,7 +103,9 @@ let userinput = await inquirer.prompt([
   },
 ]);
 
-if (userinput === "Add Student") {
+const input = userinput.userinput
+
+if (input === "Add Student") {
   const Addstudent = await inquirer.prompt([
     {
       name: "studentname",
@@ -146,7 +148,7 @@ if (userinput === "Add Student") {
   );
   students.push(addstdt);
   console.log(chalk.green("Student Added Successfuly"));
-} else if (userinput === "Add Instructor") {
+} else if (input === "Add Instructor") {
   const addInstructor = await inquirer.prompt([
     {
       name: "instname",
