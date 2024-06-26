@@ -181,7 +181,7 @@ while (!Exit) {
     else if (input === "Add Course") {
         const courseadd = await inquirer.prompt([
             {
-                name: "coursname",
+                name: "coursename",
                 type: "input",
                 message: "Please enter course name?",
                 validate: (input) => {
@@ -195,8 +195,8 @@ while (!Exit) {
                 },
             },
         ]);
-        const addcour = new Course(courseadd.coursname);
-        course.push(courseadd);
+        const addcour = new Course(courseadd.coursename);
+        course.push(addcour);
         console.log(chalk.green("Course Added Successfuly"));
     }
     else if (input === "Add Department") {
@@ -221,20 +221,40 @@ while (!Exit) {
         console.log(chalk.green("Department Added Successfuly"));
     }
     else if (input === "View Students") {
-        console.log(chalk.blue.bold(`List of Students`));
-        students.forEach((students, index) => console.log(`${index + 1}, Student Name: ${students.name}, Age: ${students.age}, Gender: ${students.gender}, Roll Number: ${students.rollnumber}`));
+        if (students.length === 0) {
+            console.log(chalk.bold.red("No student is added yet, Please add a student first."));
+        }
+        else {
+            console.log(chalk.blue.bold(`List of Students`));
+            students.forEach((students, index) => console.log(`${index + 1}, Student Name: ${students.name}, Age: ${students.age}, Gender: ${students.gender}, Roll Number: ${students.rollnumber}`));
+        }
     }
     else if (input === "View Instructor") {
-        console.log(chalk.blue.bold(`List of Instructor's`));
-        insturctor.forEach((insturctor, index) => console.log(`${index + 1}, Instructor Name: ${insturctor.name}, Age: ${insturctor.age}, Gender: ${insturctor.gender}, Salary: ${insturctor.salary}`));
+        if (insturctor.length === 0) {
+            console.log(chalk.bold.red("No instructor is added yet, Please add a instructor first."));
+        }
+        else {
+            console.log(chalk.blue.bold(`List of Instructor's`));
+            insturctor.forEach((insturctor, index) => console.log(`${index + 1}, Instructor Name: ${insturctor.name}, Age: ${insturctor.age}, Gender: ${insturctor.gender}, Salary: ${insturctor.salary}`));
+        }
     }
     else if (input === "View Courses") {
-        console.log(chalk.blue.bold(`List of Courses`));
-        course.forEach((course, index) => console.log(`${index + 1}, Course Name: ${course.coursename}, Course ID: ${course.id}}`));
+        if (course.length === 0) {
+            console.log(chalk.bold.red("No course is added yet, Please add a course first."));
+        }
+        else {
+            console.log(chalk.blue.bold(`List of Courses`));
+            course.forEach((course, index) => console.log(`${index + 1}, Course Name: ${course.coursename}, Course ID: ${course.id}}`));
+        }
     }
     else if (input === "View Departments") {
-        console.log(chalk.blue.bold(`List of Department's`));
-        Deprt.forEach((Deprt, index) => console.log(`${index + 1}, Department Name: ${Deprt.deptname}`));
+        if (Deprt.length === 0) {
+            console.log(chalk.bold.red("No department is added yet, Please add a department first."));
+        }
+        else {
+            console.log(chalk.blue.bold(`List of Department's`));
+            Deprt.forEach((Deprt, index) => console.log(`${index + 1}, Department Name: ${Deprt.deptname}`));
+        }
     }
     else if (input === "Exit") {
         break;
