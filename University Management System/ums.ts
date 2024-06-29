@@ -77,8 +77,6 @@ class Department {
   }
 }
 
-
-
 const students: Student[] = [];
 const insturctor: Instructor[] = [];
 const course: Course[] = [];
@@ -344,9 +342,9 @@ while (!Exit) {
       console.log(chalk.blue.bold(`\tList of Courses`));
       course.forEach((course, index) =>
         console.log(
-          `${index + 1}, Course Name: ${course.coursename}, Course ID: ${
-            course.id
-          }}`
+          `${index + 1}, Course ID: ${course.id}, Course Name: ${
+            course.coursename
+          } }`
         )
       );
 
