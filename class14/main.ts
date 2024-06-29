@@ -77,11 +77,29 @@ class Children extends Parent {
   getcall() {}
 }
 
-
 // Interface
 
 interface IDraw {
+  draw: () => void;
+  color: () => void;
+}
 
-draw: () => void
+class Circle implements IDraw {
+  draw() {
+    console.log("Drawing");
+  }
 
+  color() {
+    console.log("Red Color");
+  }
+}
+
+class Traiangle implements IDraw {
+  draw() {
+    console.log("Triangle");
+  }
+
+  color() {
+    console.log("Blue Color");
+  }
 }
