@@ -11,7 +11,6 @@ class Person {
     this.age = age;
     this.gender = gender;
   }
-
 }
 
 class Student extends Person {
@@ -74,13 +73,6 @@ class Department {
   addCourse(course: Course) {
     this.courses.push(course);
   }
-
-enrollstudent(student: Student, courseID: number){
-
-  
-}
-
-
 }
 
 const students: Student[] = [];
@@ -303,6 +295,44 @@ while (!Exit) {
       console.log(chalk.green("Department Added Successfuly \n"));
 
       contcond3 = adddept.ask;
+    }
+  } else if (input === "Enroll Student") {
+    if (students.length === 0) {
+      console.log(chalk.red("No student is added yet, Please add a student\n"));
+    } else if (course.length === 0) {
+      console.log(chalk.red("No course is added yet, Please add a course\n"));
+    } else {
+      const selectStudent = await inquirer.prompt([
+        {
+          name: "studentname",
+          type: "list",
+          message: "Select student to enroll:",
+          choices: students.map((student) => student.name),
+        },
+      ]);
+
+      const selectedstudent = students.find(
+        (student) => student.name === selectStudent.studentname
+      );
+
+      const selectcourse = await inquirer.prompt([
+        {
+          name: "coursename",
+          type: "list",
+          message: "Select course to enroll in:",
+          choices: course.map((course) => course.coursename),
+        },
+      ]);
+
+      const selectedcourse = course.find(
+        (course) => course.coursename === selectcourse.coursename
+      );
+
+if(selectStudent && selectStudent) {
+  selectStudent.enrollincourse(selectedcourse);
+  console.log(chalk.green(`${selectStudent.name} is enrolled in ${selectcourse.coursename} successfuly!`))
+} else {console.log(chalk.bold.red("An error occured during enrollment. Please try again.."))}
+
     }
   } else if (input === "View Students") {
     if (students.length === 0) {

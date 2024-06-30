@@ -9,7 +9,6 @@ class Person {
         this.age = age;
         this.gender = gender;
     }
-    getname() { }
 }
 class Student extends Person {
     static staticrollnumber = 0;
@@ -260,6 +259,41 @@ while (!Exit) {
             contcond3 = adddept.ask;
         }
     }
+    else if (input === "Enroll Student") {
+        if (students.length === 0) {
+            console.log(chalk.red("No student is added yet, Please add a student"));
+        }
+        else if (course.length === 0) {
+            console.log(chalk.red("No course is added yet, Please add a course"));
+        }
+        else {
+            const selectStudent = await inquirer.prompt([
+                {
+                    name: "studentname",
+                    type: "list",
+                    message: "Select student to enroll:",
+                    choices: students.map((student) => student.name),
+                },
+            ]);
+            const selectedstudent = students.find((student) => student.name === selectStudent.studentname);
+            const selectcourse = await inquirer.prompt([
+                {
+                    name: "coursename",
+                    type: "list",
+                    message: "Select course to enroll in:",
+                    choices: course.map((course) => course.coursename),
+                },
+            ]);
+            const selectedcourse = course.find((course) => course.coursename === selectcourse.coursename);
+            if (selectStudent && selectStudent) {
+                selectStudent.enrollincourse(selectedcourse);
+                console.log(chalk.green(`${selectStudent.name} is enrolled in ${selectcourse.coursename} successfuly!`));
+            }
+            else {
+                console.log(chalk.bold.red("An error occured during enrollment. Please try again.."));
+            }
+        }
+    }
     else if (input === "View Students") {
         if (students.length === 0) {
             console.log(chalk.bold.red("No student is added yet, Please add a student first."));
@@ -286,7 +320,7 @@ while (!Exit) {
         }
         else {
             console.log(chalk.blue.bold(`\tList of Courses`));
-            course.forEach((course, index) => console.log(`${index + 1}, Course Name: ${course.coursename}, Course ID: ${course.id}}`));
+            course.forEach((course, index) => console.log(`${index + 1}, Course ID: ${course.id}, Course Name: ${course.coursename} }`));
             console.log("\n");
         }
     }
@@ -304,21 +338,3 @@ while (!Exit) {
         break;
     }
 }
-// const student1 = new Student("Ayaz", 29, "Male");
-// const student2 = new Student("Ali", 29, "Male");
-// const instructor1 = new Instructor("Farukh", 56, "Male", 50000);
-// const instructor2 = new Instructor("Habib", 57, "Male", 60000);
-// const course1 = new Course("Block Chain");
-// const course2 = new Course("Metaverse");
-// course1.addstudent(student1);
-// course1.addstudent(student2);
-// course2.addstudent(student1);
-// course2.addstudent(student2);
-// course1.setInstructor(instructor1);
-// course2.setInstructor(instructor2);
-// const d1 = new Department("Computer Science");
-// d1.addCourse(course1);
-// const users: Person[] = [];
-// let condition = true;
-// while (condition) {
-//
