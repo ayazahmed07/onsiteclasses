@@ -12,7 +12,6 @@ class Person {
     this.gender = gender;
   }
 
-  getname() {}
 }
 
 class Student extends Person {
@@ -75,6 +74,13 @@ class Department {
   addCourse(course: Course) {
     this.courses.push(course);
   }
+
+enrollstudent(student: Student, courseID: number){
+
+  
+}
+
+
 }
 
 const students: Student[] = [];
@@ -369,30 +375,3 @@ while (!Exit) {
     break;
   }
 }
-
-// const student1 = new Student("Ayaz", 29, "Male");
-// const student2 = new Student("Ali", 29, "Male");
-
-// const instructor1 = new Instructor("Farukh", 56, "Male", 50000);
-// const instructor2 = new Instructor("Habib", 57, "Male", 60000);
-
-// const course1 = new Course("Block Chain");
-// const course2 = new Course("Metaverse");
-
-// course1.addstudent(student1);
-// course1.addstudent(student2);
-// course2.addstudent(student1);
-// course2.addstudent(student2);
-
-// course1.setInstructor(instructor1);
-// course2.setInstructor(instructor2);
-
-// const d1 = new Department("Computer Science");
-// d1.addCourse(course1);
-
-// const users: Person[] = [];
-
-// let condition = true;
-
-// while (condition) {
-//

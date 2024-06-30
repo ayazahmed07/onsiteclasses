@@ -103,3 +103,7 @@ class Traiangle implements IDraw {
     console.log("Blue Color");
   }
 }
+
+
+// Homework Abstact classes and members
+// static member
