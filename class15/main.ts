@@ -70,10 +70,24 @@
 
 // Task 4
 
-let arraymultiplication = (num: number) => {
-let array = [2,4,6,8,10]
+// let arraymultiplication = (num: number) => {
+// let array = [2,4,6,8,10]
 
-array.forEach(array => console.log(array * num))
-} 
+// array.forEach(array => console.log(array * num))
+// } 
 
-arraymultiplication(3)
+// arraymultiplication(10)
+
+let multiplay = (array: number[]) => {
+for (let i = 0; i < array.length; i++)
+
+array[i] *= 2  
+
+return array
+
+}
+
+let myarray = [2,3,4,5,6]
+
+console.log(multiplay(myarray));
+
