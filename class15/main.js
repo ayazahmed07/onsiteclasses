@@ -45,3 +45,8 @@
 // }
 // console.log(arrayoperation());
 // Task 4
+let arraymultiplication = (num) => {
+    let array = [2, 4, 6, 8, 10];
+    array.forEach(array => console.log(array * num));
+};
+arraymultiplication(3);
