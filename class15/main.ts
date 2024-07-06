@@ -40,19 +40,32 @@
 
 // console.log(checkevenodd(10))
 
-
 // Task 2 with arrow function
 
 // let checkoddeven = (number: number) => {
 // if(number % 2 === 0){
-//     console.log("Even") 
+//     console.log("Even")
 // }else {console.log("Odd")}
-
 
 // }
 
 // checkoddeven(11);
 
-
 // Task 3
 
+//add a number to the end remove the number from first and remove 6
+
+// let array1 = [4, 8, 6, 10, 28];
+
+// function arrayoperation() {
+//   array1.push(5);
+//   array1.shift();
+//   array1.splice(1, 1);
+
+//   return array1;
+// }
+
+// console.log(arrayoperation());
+
+
+// Task 4
