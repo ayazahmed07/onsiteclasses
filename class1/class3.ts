@@ -1,5 +1,5 @@
 let userName = "Ayaz";
-let password = 123;
+let password = 133;
 let smsCode = 456;
 if(userName == "Ayaz" && password == 123){
         console.log("Kindly provide OTP send to your registered number")
