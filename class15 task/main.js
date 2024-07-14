@@ -48,12 +48,21 @@
 // let arraymultiplication = (num: number) => {
 // let array = [2,4,6,8,10]
 // array.forEach(array => console.log(array * num))
-// } 
+// }
 // arraymultiplication(10)
-let multiplay = (array) => {
-    for (let i = 0; i < array.length; i++)
-        array[i] *= 2;
-    return array;
+// let multiplay = (array: number[]) => {
+// for (let i = 0; i < array.length; i++)
+// array[i] *= 2
+// return array
+// }
+// let myarray = [2,3,4,5,6]
+// console.log(multiplay(myarray));
+// Task 5
+// write a function that accepts an array of number and return the largest number
+let largestnumber = (array) => {
+    array.forEach((array) => {
+        console.log(array);
+    });
 };
-let myarray = [2, 3, 4, 5, 6];
-console.log(multiplay(myarray));
+let myarray = [2, 14, 5, 6, 17,];
+console.log(largestnumber(myarray));

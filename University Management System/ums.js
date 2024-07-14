@@ -1,5 +1,13 @@
+#!/usr/bin/env node
 import inquirer from "inquirer";
 import chalk from "chalk";
+async function textanimation(text) {
+    for (let char of text) {
+        process.stdout.write(char);
+        await new Promise((resolve) => setTimeout(resolve, 10));
+    }
+}
+await textanimation(chalk.bgBlue.white.bold(`\t\n Welcome in University Management System!\n`));
 class Person {
     name;
     age;
@@ -19,7 +27,12 @@ class Student extends Person {
         this.rollnumber = ++Student.staticrollnumber;
     }
     registerforcourses(course) {
-        this.courses.push(course);
+        if (!this.courses.includes(course)) {
+            this.courses.push(course);
+        }
+        else {
+            console.log(chalk.bold.red(`${this.name} is already enrolled in ${course}.`));
+        }
     }
 }
 class Instructor extends Person {
@@ -30,7 +43,12 @@ class Instructor extends Person {
         this.salary = salary;
     }
     assigncourse(course) {
-        this.courses.push(course);
+        if (!this.courses.includes(course)) {
+            this.courses.push(course);
+        }
+        else {
+            console.log(chalk.bold.red(`Instructor ${this.name} is already assigned to ${course}.`));
+        }
     }
 }
 class Course {
@@ -64,10 +82,6 @@ const students = [];
 const insturctor = [];
 const course = [];
 const Deprt = [];
-let contcond = true;
-let contcond1 = true;
-let contcond2 = true;
-let contcond3 = true;
 const Exit = false;
 while (!Exit) {
     let userinput = await inquirer.prompt([
@@ -80,6 +94,7 @@ while (!Exit) {
                 "Add Instructor",
                 "Add Course",
                 "Add Department",
+                "Assign Instructor",
                 "Enroll Student",
                 "View Students",
                 "View Instructor",
@@ -91,6 +106,7 @@ while (!Exit) {
         },
     ]);
     const input = userinput.userinput;
+    let contcond = true;
     if (input === "Add Student") {
         while (contcond) {
             const Addstudent = await inquirer.prompt([
@@ -140,6 +156,7 @@ while (!Exit) {
         console.log(chalk.green("Student Added Successfuly \n"));
     }
     else if (input === "Add Instructor") {
+        let contcond1 = true;
         while (contcond1) {
             const addInstructor = await inquirer.prompt([
                 {
@@ -200,6 +217,7 @@ while (!Exit) {
         }
     }
     else if (input === "Add Course") {
+        let contcond2 = true;
         while (contcond2) {
             const courseadd = await inquirer.prompt([
                 {
@@ -230,6 +248,7 @@ while (!Exit) {
         }
     }
     else if (input === "Add Department") {
+        let contcond3 = true;
         while (contcond3) {
             const adddept = await inquirer.prompt([
                 {
@@ -261,10 +280,10 @@ while (!Exit) {
     }
     else if (input === "Enroll Student") {
         if (students.length === 0) {
-            console.log(chalk.red("No student is added yet, Please add a student"));
+            console.log(chalk.red("No student is added yet, Please add a student\n"));
         }
         else if (course.length === 0) {
-            console.log(chalk.red("No course is added yet, Please add a course"));
+            console.log(chalk.red("No course is added yet, Please add a course\n"));
         }
         else {
             const selectStudent = await inquirer.prompt([
@@ -285,12 +304,49 @@ while (!Exit) {
                 },
             ]);
             const selectedcourse = course.find((course) => course.coursename === selectcourse.coursename);
-            if (selectStudent && selectStudent) {
-                selectStudent.enrollincourse(selectedcourse);
-                console.log(chalk.green(`${selectStudent.name} is enrolled in ${selectcourse.coursename} successfuly!`));
+            if (selectedstudent && selectedcourse) {
+                selectedstudent.registerforcourses(selectedcourse.coursename);
+                selectedcourse.addstudent(selectedstudent);
+                console.log(chalk.green(`${selectedstudent.name} is enrolled in ${selectcourse.coursename} successfuly!\n`));
             }
             else {
                 console.log(chalk.bold.red("An error occured during enrollment. Please try again.."));
+            }
+        }
+    }
+    else if (input === "Assign Instructor") {
+        if (insturctor.length === 0) {
+            console.log(chalk.red("No instructor is added yet, Please add an instructor\n"));
+        }
+        else if (course.length === 0) {
+            console.log(chalk.red("No course is added yet, Please add a course\n"));
+        }
+        else {
+            const selectInstructor = await inquirer.prompt([
+                {
+                    name: "instructorname",
+                    type: "list",
+                    message: "Select instructor to assign:",
+                    choices: insturctor.map((insturctor) => insturctor.name),
+                },
+            ]);
+            const selectedinstructor = insturctor.find((insturctor) => insturctor.name === selectInstructor.instructorname);
+            const selectcourse = await inquirer.prompt([
+                {
+                    name: "coursename",
+                    type: "list",
+                    message: "Select course to assign to:",
+                    choices: course.map((course) => course.coursename),
+                },
+            ]);
+            const selectedcourse = course.find((course) => course.coursename === selectcourse.coursename);
+            if (selectedinstructor && selectedcourse) {
+                selectedinstructor.assigncourse(selectedcourse.coursename);
+                selectedcourse.setInstructor(selectedinstructor);
+                console.log(chalk.green(`${selectedinstructor.name} is assigned to ${selectedcourse.coursename} successfully!\n`));
+            }
+            else {
+                console.log(chalk.bold.red("An error occurred during assignment. Please try again.."));
             }
         }
     }
@@ -300,7 +356,7 @@ while (!Exit) {
         }
         else {
             console.log(chalk.blue.bold(`\tList of Students`));
-            students.forEach((students, index) => console.log(`${index + 1}, Student Name: ${students.name}, Age: ${students.age}, Gender: ${students.gender}, Roll Number: ${students.rollnumber}`));
+            students.forEach((students, index) => console.log(`${index + 1}. Student Name: ${students.name}, Age: ${students.age}, Gender: ${students.gender}, Roll Number: ${students.rollnumber}`));
             console.log("\n");
         }
     }
@@ -310,7 +366,7 @@ while (!Exit) {
         }
         else {
             console.log(chalk.blue.bold(`\tList of Instructor's`));
-            insturctor.forEach((insturctor, index) => console.log(`${index + 1}, Instructor Name: ${insturctor.name}, Age: ${insturctor.age}, Gender: ${insturctor.gender}, Salary: ${insturctor.salary}`));
+            insturctor.forEach((insturctor, index) => console.log(`${index + 1}. Instructor Name: ${insturctor.name}, Age: ${insturctor.age}, Gender: ${insturctor.gender}, Salary: ${insturctor.salary}`));
             console.log("\n");
         }
     }
@@ -320,7 +376,7 @@ while (!Exit) {
         }
         else {
             console.log(chalk.blue.bold(`\tList of Courses`));
-            course.forEach((course, index) => console.log(`${index + 1}, Course ID: ${course.id}, Course Name: ${course.coursename} }`));
+            course.forEach((course, index) => console.log(`${index + 1}. Course ID: ${course.id}, Course Name: ${course.coursename} }`));
             console.log("\n");
         }
     }
@@ -330,8 +386,24 @@ while (!Exit) {
         }
         else {
             console.log(chalk.blue.bold(`\tList of Department's`));
-            Deprt.forEach((Deprt, index) => console.log(`${index + 1}, Department Name: ${Deprt.deptname}`));
+            Deprt.forEach((Deprt, index) => console.log(`${index + 1}. Department Name: ${Deprt.deptname}`));
             console.log("\n");
+        }
+    }
+    else if (input === "View Enrollments") {
+        if (course.length === 0) {
+            console.log(chalk.bold.red("No course is added yet, Please add a course first.\n"));
+        }
+        else {
+            console.log(chalk.bold.bgBlue.white("Courses:"));
+            course.forEach((course) => {
+                console.log(chalk.bold(`Course Name: ${course.coursename} Course ID: ${course.id}\n`));
+                console.log(chalk.bold.bgBlue.white("Instructors:"));
+                course.instructor.forEach((instructor) => console.log(`Instructor Name: ${instructor.name}, Gender: ${instructor.gender}\n`));
+                console.log(chalk.bold.bgBlue.white("Students Enrolled:"));
+                course.students.forEach((student) => console.log(`Student Name: ${student.name}, Roll Number: ${student.rollnumber}\n`));
+                console.log("\n");
+            });
         }
     }
     else if (input === "Exit") {
