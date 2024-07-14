@@ -1,9 +1,15 @@
 {
-  "name": "university-management-system",
+  "name": "ayazahmed07_university_management_system",
   "version": "1.0.0",
   "description": "University Management System Assignment in Object Oriented Programming",
   "main": "index.js",
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "ums": "ums.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
